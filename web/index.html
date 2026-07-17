@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ComplyKar — MSME Compliance Copilot</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230e6b5c'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='%23fff' font-family='sans-serif'%3E%E0%A4%95%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <div class="brand">
+      <span class="logo-mark" aria-hidden="true">क</span>
+      <div>
+        <div class="brand-name">ComplyKar</div>
+        <div class="brand-tag">MSME Compliance Copilot</div>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <span class="anchor-badge" title="Fixed demo date">Today: 17 Jul 2026</span>
+      <span class="price-badge">₹499/mo</span>
+    </div>
+  </div>
+</header>
+
+<div class="disclaimer-strip" role="note">
+  <span class="disc-dot">!</span>
+  Educational tool, not legal advice — confirm with your CA.
+</div>
+
+<main class="wrap" id="main">
+
+  <!-- Onboarding / profile form -->
+  <section id="onboarding">
+    <div class="hero">
+      <h1>Know exactly which compliance rules apply to <em>your</em> shop.</h1>
+      <p>Answer eight quick questions. ComplyKar tells you every registration, return and licence that applies, when each is due, and reminds you on WhatsApp — in English and Hindi.</p>
+      <button type="button" class="btn ghost" id="sampleBtn">Try a sample: Anna's Kitchen, Bengaluru</button>
+    </div>
+
+    <form id="profileForm" class="card form-card" autocomplete="off">
+      <h2 id="formTitle">Tell us about your business</h2>
+
+      <div class="grid2">
+        <label class="field">
+          <span>Business name</span>
+          <input type="text" name="businessName" placeholder="e.g. Sharma Kirana Store" required>
+        </label>
+        <label class="field">
+          <span>Owner name</span>
+          <input type="text" name="ownerName" placeholder="e.g. Meena Sharma">
+        </label>
+        <label class="field">
+          <span>WhatsApp number <small>(optional — we mock one)</small></span>
+          <input type="tel" name="phone" placeholder="+91-98XXXXXXXX">
+        </label>
+        <label class="field">
+          <span>Business category</span>
+          <select name="category" id="categorySelect" required></select>
+        </label>
+        <label class="field">
+          <span>State</span>
+          <select name="state" id="stateSelect" required></select>
+        </label>
+        <label class="field">
+          <span>Number of employees</span>
+          <input type="number" name="employees" min="0" max="10000" value="0" required>
+        </label>
+      </div>
+
+      <div class="field">
+        <span>Annual turnover</span>
+        <div class="chip-group" id="bandChips" role="radiogroup" aria-label="Annual turnover band"></div>
+      </div>
+
+      <div class="toggles">
+        <label class="toggle"><input type="checkbox" name="gstRegistered"><span class="track"></span> Already GST registered</label>
+        <label class="toggle"><input type="checkbox" name="sellsFood"><span class="track"></span> Sells food</label>
+        <label class="toggle"><input type="checkbox" name="hasPremises" checked><span class="track"></span> Physical premises</label>
+        <label class="toggle"><input type="checkbox" name="interstate"><span class="track"></span> Interstate sales</label>
+      </div>
+
+      <div class="form-foot">
+        <button type="submit" class="btn primary" id="submitBtn">See my obligations</button>
+        <span class="form-note">Free preview · full reminders at ₹499/mo</span>
+      </div>
+      <p class="fine-disclaimer">Educational tool, not legal advice — confirm with your CA.</p>
+    </form>
+  </section>
+
+  <!-- Dashboard -->
+  <section id="dashboard" hidden>
+    <div id="profileSummary" class="card summary-card"></div>
+
+    <nav class="tabs" role="tablist">
+      <button class="tab active" data-tab="obligations" role="tab">Obligations <span class="count" id="countObligations">0</span></button>
+      <button class="tab" data-tab="calendar" role="tab">Calendar (90 days) <span class="count" id="countCalendar">0</span></button>
+      <button class="tab" data-tab="outbox" role="tab">WhatsApp Outbox <span class="count" id="countOutbox">0</span></button>
+    </nav>
+
+    <div id="panel-obligations" class="panel"></div>
+    <div id="panel-calendar" class="panel" hidden></div>
+    <div id="panel-outbox" class="panel" hidden></div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <strong>ComplyKar</strong> · ₹499/mo per business · Made for Indian MSMEs
+    <span class="foot-disc">Educational tool, not legal advice — confirm with your CA. Demo anchor date: 17 Jul 2026.</span>
+  </div>
+</footer>
+
+<div id="toast" class="toast" hidden></div>
+<script src="/app.js"></script>
+</body>
+</html>
